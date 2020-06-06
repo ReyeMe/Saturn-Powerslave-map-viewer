@@ -1,0 +1,27 @@
+﻿<Window x:Class="PowerslaveMapViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PowerslaveMapViewer"
+        mc:Ignorable="d"
+        Title="Powerslave map viewer" Height="450" Width="800"  MouseMove="MouseMoves" MouseWheel="ZoomInOut">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <local:GLControl x:Name="glControl" Grid.Row="1" OpenGLInitialized="OpenGLInitialized" OpenGLDraw="OpenGLDraw" DrawFPS="False" IsHitTestVisible="False" OpenGLVersion="OpenGL4_0"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Content="&#xE78B;" ToolTip="Open map" Click="LoadMap"/>
+            <Button Content="&#xE74E;" ToolTip="Export map" Click="ExportMap" IsEnabled="{Binding IsNotMapLoading}"/>
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="2"/>
+                    <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+                    <Setter Property="FontSize" Value="24"/>
+                </Style>
+            </StackPanel.Resources>
+        </StackPanel>
+    </Grid>
+</Window>
